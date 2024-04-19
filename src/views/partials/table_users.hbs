@@ -1,0 +1,86 @@
+<!-- DATATABLES -->
+<script src="/js/table_users.js"></script>
+<table id="myTable" class="table-responsive display table table-hover">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            
+            <th>Opciones</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{email}}</td>
+            <td>{{name}}</td>
+            <td>
+                <script>
+                    var fechaRegistro = new Date("{{this.createdAt}}");
+                    var dia = fechaRegistro.getDate();
+                    var mes = fechaRegistro.getMonth() + 1;
+                    var año = fechaRegistro.getFullYear();
+                    var horas = fechaRegistro.getHours();
+                    var minutos = fechaRegistro.getMinutes();
+
+                    var fechaHoraFormateada = `${dia}/${mes}/${año} - ${horas}:${minutos}`;
+                    document.currentScript.parentElement.innerHTML = fechaHoraFormateada;
+                </script>
+               </td>
+                 <td>
+                
+                 <button class="btn btn-danger" onclick="delete('SESSION_ID')">
+                  <i class="fas fa-trash"></i> Eliminar Sesión
+               <button class="btn btn-warning" onclick="editUser('{{userId}}')">Editar</button>
+            
+            </td>
+            
+        </tr>
+        {{/each}}
+           
+    </tbody>
+</table>
+</div>
+<script>
+
+    
+
+    function updateAllDateTimeSpans() {
+        var dateTimeSpans = document.querySelectorAll('.currentDateTimeSpan');
+        var now = new Date();
+        var date = now.toLocaleDateString();
+        var time = now.toLocaleTimeString();
+        var dateTimeString = date + ' ' + time;
+        dateTimeSpans.forEach(function(span) {
+            span.textContent = dateTimeString;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateAllDateTimeSpans();
+    });
+
+        function editUser(userId) {
+          window.location.href = '/edit/' + userId;
+
+        }   
+  <script>
+    async function delete(session) {
+      try {
+        const response = await fetch(`/sessions/${sessionId}`, {
+          method: 'DELETE'
+        });
+        const data = await response.text();
+        alert(data); 
+      } catch (error) {
+        console.error('Error al eliminar la sesión:', error);
+      }
+    }
+   
+</script>
+
+
+
+

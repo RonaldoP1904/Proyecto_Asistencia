@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">REGISTRO DE ASITENCIAS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class= "nav-link {{obt_ruta ubicacion 'about'}}" aria-current="page" href="/about">Acerca de</a>
+        
+        {{#if session._id}}
+          <a class="nav-link {{obt_ruta ubicacion 'principal'}}" href="/principal">Principal</a>
+          <a class="nav-link {{obt_ruta ubicacion 'salir'}}" href="/salir">Salir</a>
+        {{else}}
+          <a class="nav-link {{obt_ruta ubicacion 'login'}}" href="/login">Acceso</a>
+          <a class="nav-link {{obt_ruta ubicacion 'registro'}}" href="/registro">Registro</a>
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+</nav>
