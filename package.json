@@ -1,12 +1,12 @@
 {
-  "name": "ronaldoprieto",
+  "name": "proyecto_instbmv",
   "version": "1.0.0",
   "description": "Proyecto Grupo 3",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
   },
-  "author": "Ronaldo",
+  "author": "PRIETO",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
