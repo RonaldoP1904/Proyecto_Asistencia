@@ -31,12 +31,17 @@
                </td>
                  <td>
                 
-                 <button class="btn btn-danger" onclick="delete('SESSION_ID')">
-                  <i class="fas fa-trash"></i> Eliminar Sesión
-               <button class="btn btn-warning" onclick="editUser('{{userId}}')">Editar</button>
-            
+               <form action="/users/delete-users/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger" type="submit">
+                            <i class="fas fa-trash"></i> Eliminar Sesión
+                        </button>
+                    </form>
             </td>
-            
+            <td>
+                    <a class="btn btn-primary" href="/users/edit/{{_id}}">Editar</a>
+                     
+                </td>
         </tr>
         {{/each}}
            
